@@ -1,1 +1,76 @@
-# retail-data-quality-framework
+Proyecto: Framework de Integridad y Análisis de Ventas Retail
+Rol: Data Analyst | Stack: Python (Pandas), Business Intelligence.
+1. Contexto y Problema de Negocio
+La empresa "Imaginación" enfrentaba una crisis de confianza en sus reportes financieros. Las métricas de ventas presentaban discrepancias entre los ingresos reportados y los reales, debido a la falta de un proceso de Data Quality Governance.
+Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeación de inventarios y pérdida de credibilidad operativa.
+
+2. Objetivos Estratégicos
+Aseguramiento de la veracidad de los datos: Implementar un motor de reglas de negocio para filtrar registros no confiables y obtener un Golden DataSet
+Identificación de los datos no confiables: Recopilación de los datos no confiables en un Dirty DataSet
+Trazabilidad de errores: Diseñar una taxonomía de errores (Error Tagging) para identificar las fallas que presentan los datos.
+Conciliación financiera: Generar un Bridge Report que explique la diferencia entre el dato bruto y el dato validado.
+Reporte de causa raíz: Generar un RCA para identificar los posibles patrones de fallo.
+
+3. Taxonomía de errores
+
+CÓDIGO DE ERRO
+DESCRIPCIÓN
+TIPO
+ACCIÓN
+CRITICAL_ERROR
+Fallo en campo crítico o valores negativos en cantidad o precio.
+Crítico
+Eliminar del análisis
+INVALID_RANGE
+Descuento fuera de rango 
+No crítico
+Corregir (Imputar 0)
+DUPLICATED
+Transacción idéntica duplicada
+Duplicado
+Conservar solo uno
+INVALID_LOGIC
+Inconsistencia de dato
+No crítico
+Corregir (Imputar a 0% o 'Unknown')
+
+
+
+4. Arquitectura de Calidad de Datos (Reglas de Negocio)
+A. Reglas Críticas
+Si falla una, el registro se categoriza como NON-RELIABLE y se excluye del análisis financiero final.
+Integridad de transacción: quantity > 0 y unit_price > 0.
+Completitud: Campos críticos (order_id, category, quantity, unit_price, order_date) no pueden ser nulos.
+B. Reglas de Negocio 
+Si falla, el registro se categoriza como CORRIGIBLE mediante reglas de imputación.
+Umbral de descuento: Discount ∈ [0,0.35]. Los valores fuera de rango se imputan a la mediana o al límite superior según política.
+Imputación lógica: Si discount es nulo, se imputa 0%. Si region es nula, se imputa como "Unknown".
+C. Reglas de Unicidad
+Deduplicación: Identificación de registros idénticos por atributos clave, conservando solo la primera instancia (Timestamp más antiguo).
+
+5. Metodología de Implementación
+Exploratory Data Quality (EDQ): Diagnóstico inicial de nulos críticos, duplicados y valores inválidos.
+Data Labeling & Categorization: Creación de columnas de control:
+is_valid: Flag booleano de confiabilidad.
+error_code: Etiqueta específica del error presentado.
+category_value: Etiqueta específica de la categoría del registro.
+Data Cleaning & Imputation: Aplicación de correcciones lógicas sin alterar la fuente original (Staging).
+Recálculo de Métricas: Re-proceso de gross_sales y net_sales basado en datos limpios.
+
+6. Análisis de Causa Raíz (RCA) - Hallazgos
+Tras auditar los registros excluidos, se identificaron los siguientes patrones de falla:
+Falla de integridad estructural: El 96% de los errores fueron NULL_CRITICAL. Esto indica una falta de campos obligatorios en el formulario de captura o fallos en la transferencia de datos (ETL) desde la base de datos origen.
+Inconsistencia de precios/cantidades: Los errores de tipo INVALID_VALUE sugieren que el sistema permite la entrada de números negativos. Esto es un fallo de validación en el Front-end que debe corregirse para evitar ruido financiero.
+Problema de Sincronización: Se detectaron 104 registros duplicados. Esto ocurre típicamente cuando los procesos de carga de datos se ejecutan dos veces sin una validación de "llave primaria" o cuando hay reintentos automáticos tras una falla de red.
+Foco crítico: La categoría Sports concentra el mayor volumen de fallas, lo que requiere una auditoría específica en los procesos de facturación de dicha línea de negocio.
+
+7. Impacto Financiero (Bridge Report)
+Tras aplicar un análisis sumatorio al corpus de dato inicial y final se obtuvo que: 
+Ventas brutas iniciales: $16,922,593.85
+Ventas brutas validadas: $16,622,083.46
+Riesgo mitigado: $300,510.39 (1.78% de desviación corregida sobre el reporte original)
+8. Resultados y Entregables
+Dataset "Golden Standard": Base de datos curada lista para consumo de BI.
+Dataset “Dirty Data”: Base de datos lista, con los registros rechazados listos para su auditoría por parte de TI. 
+Bridge Report: Comparativa antes y después, recuperando la confianza en el KPI de ventas netas.
+Reporte de causa raíz: Indicadores del posible origen de las fallas y errores encontrados en el DataSet original. 
