@@ -1,4 +1,4 @@
-Proyecto: Framework de Integridad y Análisis de Ventas Retail
+# Proyecto: Framework de Integridad y Análisis de Ventas Retail
 Rol: Data Analyst | Stack: Python (Pandas), Business Intelligence.
 1. Contexto y Problema de Negocio
 La empresa "Imaginación" enfrentaba una crisis de confianza en sus reportes financieros. Las métricas de ventas presentaban discrepancias entre los ingresos reportados y los reales, debido a la falta de un proceso de Data Quality Governance.
