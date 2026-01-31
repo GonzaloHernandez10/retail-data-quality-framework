@@ -66,4 +66,12 @@ Tras aplicar un análisis sumatorio al corpus de datos inicial y final se obtuvo
 1. Dataset "Golden Standard": Base de datos curada lista para consumo de BI.
 2. Dataset “Dirty Data”: Base de datos lista, con los registros rechazados listos para su auditoría por parte de TI.
 3. Bridge Report: Comparativa antes y después, recuperando la confianza en el KPI de ventas netas.
-4. Reporte de causa raíz: Indicadores del posible origen de las fallas y errores encontrados en el DataSet original. 
+4. Reporte de causa raíz: Indicadores del posible origen de las fallas y errores encontrados en el DataSet original.
+
+<img width="885" height="579" alt="Captura de pantalla 2026-01-30 a la(s) 11 44 56 p m" src="https://github.com/user-attachments/assets/8bf5d79b-c54c-49d2-b660-30180b670884" />
+
+<img width="884" height="574" alt="imagen" src="https://github.com/user-attachments/assets/ff1467ff-26ed-4c60-8c09-001f7788ed4a" />
+
+<img width="438" height="355" alt="Captura de pantalla 2026-01-30 a la(s) 11 45 29 p m" src="https://github.com/user-attachments/assets/d4e684e8-b327-4e01-8337-5e8c2cb4e3de" />
+
+
