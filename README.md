@@ -1,5 +1,5 @@
 # :memo: Proyecto: Framework de Integridad y Análisis de Ventas Retail
-Rol: Data Analyst | Stack: Python (Pandas), Business Intelligence.
+Rol: Data Analyst | Stack: Python (Pandas), Business Intelligence, Data Engineering, Data Quality, Data Governance
 
 # :book: 1. Contexto y Problema de Negocio
 
@@ -16,28 +16,12 @@ Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeac
 
 # :bug: 3. Taxonomía de errores
 
-CÓDIGO DE ERROR
-DESCRIPCIÓN
-TIPO
-ACCIÓN
-CRITICAL_ERROR
-Fallo en campo crítico o valores negativos en cantidad o precio.
-Crítico
-Eliminar del análisis
-INVALID_RANGE
-Descuento fuera de rango 
-No crítico
-Corregir (Imputar 0)
-DUPLICATED
-Transacción idéntica duplicada
-Duplicado
-Conservar solo uno
-INVALID_LOGIC
-Inconsistencia de dato
-No crítico
-Corregir (Imputar a 0% o 'Unknown')
-
-
+| CÓDIGO DE ERROR | DESCRIPCIÓN | TIPO | ACCIÓN
+|:---:|:---|:---:|:---|
+| CRITICAL_ERROR | Fallo en campo crítico o valores negativos en cantidad o precio. | Crítico | Eliminar del análisis |
+| INVALID_RANGE | Descuento fuera de rango (>35%). | No crítico | Corregir (Imputar 0 o max) |
+| DUPLICATED | Transacción idéntica duplicada | Duplicado | Conservar solo uno |
+| INVALID_LOGIC | Inconsistencia | No crítico | Corregir (Inputar a 0% o 'Unknown')
 
 4. Arquitectura de Calidad de Datos (Reglas de Negocio)
 A. Reglas Críticas
