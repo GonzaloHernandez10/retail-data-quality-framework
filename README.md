@@ -38,29 +38,32 @@ B. Reglas de Negocio
 C. Reglas de Unicidad
   - Deduplicación: Identificación de registros idénticos por atributos clave, conservando solo la primera instancia (Timestamp más antiguo).
 
-5. Metodología de Implementación
-Exploratory Data Quality (EDQ): Diagnóstico inicial de nulos críticos, duplicados y valores inválidos.
-Data Labeling & Categorization: Creación de columnas de control:
-is_valid: Flag booleano de confiabilidad.
-error_code: Etiqueta específica del error presentado.
-category_value: Etiqueta específica de la categoría del registro.
-Data Cleaning & Imputation: Aplicación de correcciones lógicas sin alterar la fuente original (Staging).
-Recálculo de Métricas: Re-proceso de gross_sales y net_sales basado en datos limpios.
+# :building_construction: 5. Metodología de Implementación
 
-6. Análisis de Causa Raíz (RCA) - Hallazgos
+1. Exploratory Data Quality (EDQ): Diagnóstico inicial de nulos críticos, duplicados y valores inválidos.
+2. Data Labeling & Categorization: Creación de columnas de control:
+   - is_valid: Flag booleano de confiabilidad.
+   - error_code: Etiqueta específica del error presentado.
+   - category_value: Etiqueta específica de la categoría del registro.
+3. Data Cleaning & Imputation: Aplicación de correcciones lógicas sin alterar la fuente original (Staging).
+4. Recálculo de Métricas: Re-proceso de gross_sales y net_sales basado en datos limpios.
+
+# :mag_right: 6. Análisis de Causa Raíz (RCA) - Hallazgos
+
 Tras auditar los registros excluidos, se identificaron los siguientes patrones de falla:
-Falla de integridad estructural: El 96% de los errores fueron NULL_CRITICAL. Esto indica una falta de campos obligatorios en el formulario de captura o fallos en la transferencia de datos (ETL) desde la base de datos origen.
-Inconsistencia de precios/cantidades: Los errores de tipo INVALID_VALUE sugieren que el sistema permite la entrada de números negativos. Esto es un fallo de validación en el Front-end que debe corregirse para evitar ruido financiero.
-Problema de Sincronización: Se detectaron 104 registros duplicados. Esto ocurre típicamente cuando los procesos de carga de datos se ejecutan dos veces sin una validación de "llave primaria" o cuando hay reintentos automáticos tras una falla de red.
-Foco crítico: La categoría Sports concentra el mayor volumen de fallas, lo que requiere una auditoría específica en los procesos de facturación de dicha línea de negocio.
+  - Falla de integridad estructural: El 96% de los errores fueron NULL_CRITICAL. Esto indica una falta de campos obligatorios en el formulario de captura o fallos en la transferencia de datos (ETL) desde la base      de datos origen.
+  - Inconsistencia de precios/cantidades: Los errores de tipo INVALID_VALUE sugieren que el sistema permite la entrada de números negativos. Esto es un fallo de validación en el Front-end que debe corregirse para     evitar ruido financiero.
+  - Problema de Sincronización: Se detectaron 104 registros duplicados. Esto ocurre típicamente cuando los procesos de carga de datos se ejecutan dos veces sin una validación de "llave primaria" o cuando hay          reintentos automáticos tras una falla de red.
+  - Foco crítico: La categoría Sports concentra el mayor volumen de fallas, lo que requiere una auditoría específica en los procesos de facturación de dicha línea de negocio.
 
-7. Impacto Financiero (Bridge Report)
-Tras aplicar un análisis sumatorio al corpus de dato inicial y final se obtuvo que: 
-Ventas brutas iniciales: $16,922,593.85
-Ventas brutas validadas: $16,622,083.46
-Riesgo mitigado: $300,510.39 (1.78% de desviación corregida sobre el reporte original)
-8. Resultados y Entregables
-Dataset "Golden Standard": Base de datos curada lista para consumo de BI.
-Dataset “Dirty Data”: Base de datos lista, con los registros rechazados listos para su auditoría por parte de TI. 
-Bridge Report: Comparativa antes y después, recuperando la confianza en el KPI de ventas netas.
-Reporte de causa raíz: Indicadores del posible origen de las fallas y errores encontrados en el DataSet original. 
+# :chart_with_upwards_trend: 7. Impacto Financiero (Bridge Report)
+Tras aplicar un análisis sumatorio al corpus de datos inicial y final se obtuvo que: 
+  - Ventas brutas iniciales: $16,922,593.85
+  - Ventas brutas validadas: $16,622,083.46
+  - Riesgo mitigado: $300,510.39 (1.78% de desviación corregida sobre el reporte original)
+    
+# :bulb: 8. Resultados y Entregables
+  - Dataset "Golden Standard": Base de datos curada lista para consumo de BI.
+  - Dataset “Dirty Data”: Base de datos lista, con los registros rechazados listos para su auditoría por parte de TI.
+  - Bridge Report: Comparativa antes y después, recuperando la confianza en el KPI de ventas netas.
+  - Reporte de causa raíz: Indicadores del posible origen de las fallas y errores encontrados en el DataSet original. 
