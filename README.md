@@ -3,17 +3,17 @@ Rol: Data Analyst | Stack: Python (Pandas), Business Intelligence.
 
 # :book: 1. Contexto y Problema de Negocio
 <div style="text-align: justify; text-justify: inter-word;">
-La empresa "Imaginación" enfrentaba una crisis de confianza en sus reportes financieros. Las métricas de ventas presentaban discrepancias entre los ingresos reportados y los reales, debido a la falta de un proceso de Data Quality Governance.
-Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeación de inventarios y pérdida de credibilidad operativa.
+  La empresa "Imaginación" enfrentaba una crisis de confianza en sus reportes financieros. Las métricas de ventas presentaban discrepancias entre los ingresos reportados y los reales, debido a la falta de un        proceso de Data Quality Governance.
+  Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeación de inventarios y pérdida de credibilidad operativa.
 </div>
 
 # :dart: 2. Objetivos Estratégicos
 <div style="text-align: justify; text-justify: inter-word;">
-Aseguramiento de la veracidad de los datos: Implementar un motor de reglas de negocio para filtrar registros no confiables y obtener un Golden DataSet
-Identificación de los datos no confiables: Recopilación de los datos no confiables en un Dirty DataSet
-Trazabilidad de errores: Diseñar una taxonomía de errores (Error Tagging) para identificar las fallas que presentan los datos.
-Conciliación financiera: Generar un Bridge Report que explique la diferencia entre el dato bruto y el dato validado.
-Reporte de causa raíz: Generar un RCA para identificar los posibles patrones de fallo.
+  Aseguramiento de la veracidad de los datos: Implementar un motor de reglas de negocio para filtrar registros no confiables y obtener un Golden DataSet
+  Identificación de los datos no confiables: Recopilación de los datos no confiables en un Dirty DataSet
+  Trazabilidad de errores: Diseñar una taxonomía de errores (Error Tagging) para identificar las fallas que presentan los datos.
+  Conciliación financiera: Generar un Bridge Report que explique la diferencia entre el dato bruto y el dato validado.
+  Reporte de causa raíz: Generar un RCA para identificar los posibles patrones de fallo.
 </div>
 
 # :bug: 3. Taxonomía de errores
