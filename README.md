@@ -14,7 +14,7 @@ Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeac
 4. Conciliación financiera: Generar un Bridge Report que explique la diferencia entre el dato bruto y el dato validado.
 5. Reporte de causa raíz: Generar un RCA para identificar los posibles patrones de fallo.
 
-# :bug: 3. Taxonomía de errores
+# :bug: 3. Taxonomía de Errores
 
 | CÓDIGO DE ERROR | DESCRIPCIÓN | TIPO | ACCIÓN
 |:---:|:---|:---:|:---|
@@ -23,17 +23,17 @@ Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeac
 | DUPLICATED | Transacción idéntica duplicada | Duplicado | Conservar solo uno |
 | INVALID_LOGIC | Inconsistencia | No crítico | Corregir (Inputar a 0% o 'Unknown')
 
-4. Arquitectura de Calidad de Datos (Reglas de Negocio)
+# :gear: 4. Arquitectura de Calidad de Datos (Reglas de Negocio)
 A. Reglas Críticas
-Si falla una, el registro se categoriza como NON-RELIABLE y se excluye del análisis financiero final.
-Integridad de transacción: quantity > 0 y unit_price > 0.
-Completitud: Campos críticos (order_id, category, quantity, unit_price, order_date) no pueden ser nulos.
+  - Si falla una, el registro se categoriza como NON-RELIABLE y se excluye del análisis financiero final.
+  - Integridad de transacción: quantity > 0 y unit_price > 0.
+  - Completitud: Campos críticos (order_id, category, quantity, unit_price, order_date) no pueden ser nulos.
 B. Reglas de Negocio 
-Si falla, el registro se categoriza como CORRIGIBLE mediante reglas de imputación.
-Umbral de descuento: Discount ∈ [0,0.35]. Los valores fuera de rango se imputan a la mediana o al límite superior según política.
-Imputación lógica: Si discount es nulo, se imputa 0%. Si region es nula, se imputa como "Unknown".
+  - Si falla, el registro se categoriza como CORRIGIBLE mediante reglas de imputación.
+  - Umbral de descuento: Discount ∈ [0,0.35]. Los valores fuera de rango se imputan a la mediana o al límite superior según política.
+  - Imputación lógica: Si discount es nulo, se imputa 0%. Si region es nula, se imputa como "Unknown".
 C. Reglas de Unicidad
-Deduplicación: Identificación de registros idénticos por atributos clave, conservando solo la primera instancia (Timestamp más antiguo).
+  - Deduplicación: Identificación de registros idénticos por atributos clave, conservando solo la primera instancia (Timestamp más antiguo).
 
 5. Metodología de Implementación
 Exploratory Data Quality (EDQ): Diagnóstico inicial de nulos críticos, duplicados y valores inválidos.
