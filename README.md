@@ -1,10 +1,11 @@
 # :memo: Proyecto: Framework de Integridad y Análisis de Ventas Retail
 Rol: Data Analyst | Stack: Python (Pandas), Business Intelligence.
-1. Contexto y Problema de Negocio
+
+# :book: 1. Contexto y Problema de Negocio
 La empresa "Imaginación" enfrentaba una crisis de confianza en sus reportes financieros. Las métricas de ventas presentaban discrepancias entre los ingresos reportados y los reales, debido a la falta de un proceso de Data Quality Governance.
 Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeación de inventarios y pérdida de credibilidad operativa.
 
-2. Objetivos Estratégicos
+# :dart: 2. Objetivos Estratégicos
 Aseguramiento de la veracidad de los datos: Implementar un motor de reglas de negocio para filtrar registros no confiables y obtener un Golden DataSet
 Identificación de los datos no confiables: Recopilación de los datos no confiables en un Dirty DataSet
 Trazabilidad de errores: Diseñar una taxonomía de errores (Error Tagging) para identificar las fallas que presentan los datos.
