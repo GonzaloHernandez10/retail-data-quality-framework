@@ -4,6 +4,7 @@ Rol: Data Analyst | Stack: Python (Pandas), Business Intelligence, Data Engineer
 # :book: 1. Contexto y Problema de Negocio
 
 La empresa "Imaginación" enfrentaba una crisis de confianza en sus reportes financieros. Las métricas de ventas presentaban discrepancias entre los ingresos reportados y los reales, debido a la falta de un        proceso de Data Quality Governance.
+
 Impacto: Decisiones comerciales basadas en datos inflados, riesgos en la planeación de inventarios y pérdida de credibilidad operativa.
 
 # :dart: 2. Objetivos Estratégicos
