@@ -63,8 +63,8 @@ Tras aplicar un análisis sumatorio al corpus de datos inicial y final se obtuvo
 3. Riesgo mitigado: $300,510.39 (1.78% de desviación corregida sobre el reporte original).
     
 # :bulb: 8. Resultados y Entregables
-1. Dataset "Golden Standard": Base de datos curada lista para consumo en Power BI.
-2. Dataset “Dirty Data”: Base de datos lista, con los registros rechazados listos para su auditoría por parte de TI.
+1. DataSet "Golden Standard": Base de datos curada lista para consumo en Power BI.
+2. DataSet “Dirty Data”: Base de datos lista, con los registros rechazados listos para su auditoría por parte de TI.
 3. Bridge Report: Comparativa antes y después, recuperando la confianza en el KPI de ventas netas.
 4. Reporte de causa raíz: Indicadores del posible origen de las fallas y errores encontrados en el DataSet original.
 
