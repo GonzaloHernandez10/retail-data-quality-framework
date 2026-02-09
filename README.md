@@ -54,7 +54,7 @@ Tras auditar los registros excluidos, se identificaron los siguientes patrones d
 1. Falla de integridad estructural: El 96% de los errores fueron NULL_CRITICAL. Esto indica una falta de campos obligatorios en el formulario de captura o fallos en la transferencia de datos (ETL) desde la base      de datos origen.
 2. Inconsistencia de precios/cantidades: Los errores de tipo INVALID_VALUE sugieren que el sistema permite la entrada de números negativos. Esto es un fallo de validación en el Front-end que debe corregirse para     evitar ruido financiero.
 3. Problema de sincronización: Se detectaron 104 registros duplicados. Esto ocurre típicamente cuando los procesos de carga de datos se ejecutan dos veces sin una validación de "llave primaria" o cuando hay          reintentos automáticos tras una falla de red.
-4. Foco crítico: La categoría Sports concentra el mayor volumen de fallas, lo que requiere una auditoría específica en los procesos de facturación de dicha línea de negocio.
+4. Foco crítico: La categoría "Sports" concentra el mayor volumen de fallas, lo que requiere una auditoría específica en los procesos de facturación de dicha línea de negocio.
 
 # :chart_with_upwards_trend: 7. Impacto Financiero (Bridge Report)
 Tras aplicar un análisis sumatorio al corpus de datos inicial y final se obtuvo que: 
